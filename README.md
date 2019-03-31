@@ -15,3 +15,53 @@ Adaboost use a recursion mechanism to select and add on the weak classifiers to 
 
 ## Transfer to the Realboost
 The main difference between Realboost and the Adaboost is that the Realboost does not set a simple threshold to seperate the groups for weak classifiers. However, it divided the activation values into numbers of bins and in each ranges of bins, we will count the number of members in different groups. Here we do not use Realboost entirely but just use the selected filters and update the parameters for the Realboost weak classifiers in each round. It is open to modify the code to do a full Realboost process. However, it would just costs much more computing power.
+
+## Result and the report
+
+The top 20 Haar filters are chosen by sort the weights descend.
+
+<div align="center">
+        <img src="https://github.com/nji3/Face_Detection_by_Adaboost_and_Realboost/blob/master/readme_img/Top%2020%20Haar%20Filters.png" width="400px"</img> 
+</div>
+
+The Training Errors of the strong classifiers:
+
+<div align="center">
+        <img src="https://github.com/nji3/Face_Detection_by_Adaboost_and_Realboost/blob/master/readme_img/The_Training_Error_of_Strong.png" width="400px"</img> 
+</div>
+
+The training errors of the top 1000 weak classifiers:
+
+<div align="center">
+        <img src="https://github.com/nji3/Face_Detection_by_Adaboost_and_Realboost/blob/master/readme_img/Weak%20Classifier%20Errors.png" width="400px"</img> 
+</div>
+
+As what we expected, more weak classifers chosen, closer the error rate goes to 0.5. And the rest in the pool would performs worse and worse.
+
+The histogram when T=10:
+
+<div align="center">
+        <img src="https://github.com/nji3/Face_Detection_by_Adaboost_and_Realboost/blob/master/readme_img/histogram_9.png" width="400px"</img> 
+</div>
+
+The histogram when T=50:
+
+<div align="center">
+        <img src="https://github.com/nji3/Face_Detection_by_Adaboost_and_Realboost/blob/master/readme_img/histogram_49.png" width="400px"</img> 
+</div>
+
+The histogram when T=100:
+
+<div align="center">
+        <img src="https://github.com/nji3/Face_Detection_by_Adaboost_and_Realboost/blob/master/readme_img/histogram_99.png" width="400px"</img> 
+</div>
+
+From T=10 to T=50, there is a very clear progress that two distributions are formed. From T=50 to T=100, the distributions become smoother and the means of them just get farther to each other.
+
+The ROC plot:
+
+<div align="center">
+        <img src="https://github.com/nji3/Face_Detection_by_Adaboost_and_Realboost/blob/master/readme_img/ROC%20Curve.png" width="400px"</img> 
+</div>
+
+The ROC plot shows the classification result just goes better and better as we increase the number of chosen weak classifiers.
